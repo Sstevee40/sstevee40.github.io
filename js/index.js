@@ -1,7 +1,7 @@
 //Inits
 var h = window.innerHeight;
 var w = window.innerWidth;
-
+var playerDist = 10;
 
 
 
@@ -41,27 +41,30 @@ function draw() {
 	
 
 
-    fill(0,0,255);
+  	fill(255,0,0);
     ellipse(ellipse1X, ellipse1Y, ellipseW,ellipseW);
 
 	fill(0,255,0);
     ellipse(ellipse2X, ellipse2Y, ellipseW,ellipseW);
 
-	fill(255,0,0);
+	fill(0,0,255);
 	ellipse(ellipse3X, ellipse3Y, ellipseW,ellipseW);
 
 
 
 	if (playerFill == 1) {
 		fill(255,0,0);
+		playerDist = dist(ellipse1X,ellipse1Y,mouseX,mouseY);
 	}
 
 	if (playerFill == 2) {
 		fill(0,255,0);
+		playerDist = dist(ellipse2X,ellipse2Y,mouseX,mouseY);
 	}
 
 	if (playerFill == 3) {
 		fill(0,0,255);
+		playerDist = dist(ellipse3X,ellipse3Y,mouseX,mouseY);
 	}
 
 	playerEllipse = ellipse(mouseX,mouseY,30,30);
@@ -71,7 +74,13 @@ function draw() {
     ellipseW = ellipseW - 2.5;
  
 
+
+
+
+
 	if (ellipseW < 50){
+
+		if (playerDist < 15) {
 
 		ellipseW = random(150,300);
 		
@@ -85,6 +94,15 @@ function draw() {
    		ellipse3Y = random(h);
 
    		playerFill = floor(random(1,4));
+
+   		}
+
+   		else {
+
+
+   			ellipseW = 0;
+   		}
+
 
 	}
 
