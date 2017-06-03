@@ -8,7 +8,8 @@ var score = 0;
 
 
 function preload() {  
-	 corkPop = loadSound('assets/cork.flac');
+	 goodSound = loadSound('assets/good.ogg');
+	 badSound = loadSound('assets/bad.ogg');
 }
 
 
@@ -99,11 +100,12 @@ noFill();
 
 		if (playerDist < 12) {
    			score = score + 1;
-   			corkPop.play();
+   			goodSound.play();
    		}
 
    		else {
    			score = 0;
+   			badSound.play();
    		}
 
 
