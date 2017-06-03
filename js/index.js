@@ -1,7 +1,7 @@
 //Inits
-var x, y, ballSize;
 var h = window.innerHeight;
 var w = window.innerWidth;
+
 var circleTimer = 0;
 var scaleCounter = 1;
 
@@ -17,11 +17,23 @@ function preload() {
 
 function setup() {
 
-  createCanvas(window.innerWidth, window.innerHeight);
-   ellipseW = random(100,200);
-   ellipseH = random(100,200);
-   ellipseX = random(w);
-   ellipseY = random(h);
+   createCanvas(window.innerWidth, window.innerHeight);
+
+   ellipse1W = random(100,200);
+   ellipse1H = random(100,200);
+   ellipse1X = random(w);
+   ellipse1Y = random(h);
+
+   ellipse2W = random(100,200);
+   ellipse2H = random(100,200);
+   ellipse2X = random(w);
+   ellipse2Y = random(h);
+
+   ellipse3W = random(100,200);
+   ellipse3H = random(100,200);
+   ellipse3X = random(w);
+   ellipse3Y = random(h);
+
 
 
 
@@ -34,23 +46,40 @@ function draw() {
 
 
 	
-	circleTimer = circleTimer + 1;
-
-	scaleCounter = Math.random();
-    //scaleCounter = scaleCounter - 0.01;
-	scale(scaleCounter);
 
 
+    fill(0,0,255);
+    ellipse(ellipse1X, ellipse1Y, ellipse1W,ellipse1W);
 
-   ellipse(ellipseX, ellipseY, ellipseW, ellipseH);
+	fill(0,255,0);
+    ellipse(ellipse2X, ellipse2Y, ellipse2W,ellipse2W);
+
+	fill(255,0,0);
+	ellipse(ellipse3X, ellipse3Y, ellipse3W,ellipse3W);
 
 
-	if (ellipseW < 2 || ellipseH < 2) {
 
-		ellipseW = random(100,200);
-   		ellipseH = random(100,200);
-   		ellipseX = random(w);
-   		ellipseY = random(h);
+    ellipse1W = ellipse1W - 1;
+ 	ellipse2W = ellipse2W - 1;
+ 	ellipse3W = ellipse3W - 1;
+
+
+	if ((ellipse1W < 20 || ellipse1H < 20) || (ellipse2W < 20 || ellipse2H < 20) || (ellipse3W < 20 || ellipse3H < 20)) {
+
+		ellipse1W = random(100,200);
+   		ellipse1H = random(100,200);
+   		ellipse1X = random(w);
+   		ellipse1Y = random(h);
+
+		ellipse2W = random(100,200);
+   		ellipse2H = random(100,200);
+   		ellipse2X = random(w);
+   		ellipse2Y = random(h);
+
+		ellipse3W = random(100,200);
+   		ellipse3H = random(100,200);
+   		ellipse3X = random(w);
+   		ellipse3Y = random(h);
 
 	}
 
