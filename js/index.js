@@ -36,12 +36,10 @@ function draw() {
 	
 	circleTimer = circleTimer + 1;
 
+	scaleCounter = Math.random();
+    //scaleCounter = scaleCounter - 0.01;
+	scale(scaleCounter);
 
-     
-    translate(w/2, h/2);
-
-    scaleCounter = scaleCounter - 0.1;
-	scale(scaleCounter,scaleCounter);
 
 
    ellipse(ellipseX, ellipseY, ellipseW, ellipseH);
