@@ -2,8 +2,6 @@
 var h = window.innerHeight;
 var w = window.innerWidth;
 
-var circleTimer = 0;
-var scaleCounter = 1;
 
 
 
@@ -19,23 +17,18 @@ function setup() {
 
    createCanvas(window.innerWidth, window.innerHeight);
 
-   ellipse1W = random(100,200);
-   ellipse1H = random(100,200);
+   ellipseW = 300;
+
    ellipse1X = random(w);
    ellipse1Y = random(h);
 
-   ellipse2W = random(100,200);
-   ellipse2H = random(100,200);
    ellipse2X = random(w);
    ellipse2Y = random(h);
 
-   ellipse3W = random(100,200);
-   ellipse3H = random(100,200);
    ellipse3X = random(w);
    ellipse3Y = random(h);
 
-
-
+  playerFill = random(1,4);
 
 
 }
@@ -49,37 +42,49 @@ function draw() {
 
 
     fill(0,0,255);
-    ellipse(ellipse1X, ellipse1Y, ellipse1W,ellipse1W);
+    ellipse(ellipse1X, ellipse1Y, ellipseW,ellipseW);
 
 	fill(0,255,0);
-    ellipse(ellipse2X, ellipse2Y, ellipse2W,ellipse2W);
+    ellipse(ellipse2X, ellipse2Y, ellipseW,ellipseW);
 
 	fill(255,0,0);
-	ellipse(ellipse3X, ellipse3Y, ellipse3W,ellipse3W);
+	ellipse(ellipse3X, ellipse3Y, ellipseW,ellipseW);
 
 
 
-    ellipse1W = ellipse1W - 1;
- 	ellipse2W = ellipse2W - 1;
- 	ellipse3W = ellipse3W - 1;
+	if (playerFill == 1) {
+		fill(255,0,0);
+	}
+
+	if (playerFill == 2) {
+		fill(0,255,0);
+	}
+
+	if (playerFill == 3) {
+		fill(0,0,255);
+	}
+
+	playerEllipse = ellipse(mouseX,mouseY,30,30);
 
 
-	if ((ellipse1W < 20 || ellipse1H < 20) || (ellipse2W < 20 || ellipse2H < 20) || (ellipse3W < 20 || ellipse3H < 20)) {
 
-		ellipse1W = random(100,200);
-   		ellipse1H = random(100,200);
+    ellipseW = ellipseW - 2.5;
+ 
+
+	if (ellipseW < 50){
+
+		ellipseW = random(150,300);
+		
    		ellipse1X = random(w);
    		ellipse1Y = random(h);
 
-		ellipse2W = random(100,200);
-   		ellipse2H = random(100,200);
    		ellipse2X = random(w);
    		ellipse2Y = random(h);
-
-		ellipse3W = random(100,200);
-   		ellipse3H = random(100,200);
+		
    		ellipse3X = random(w);
    		ellipse3Y = random(h);
+
+   		playerFill = floor(random(1,4));
 
 	}
 
