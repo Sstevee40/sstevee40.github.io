@@ -74,7 +74,7 @@ noFill();
 
 
 
-    ellipseW = ellipseW - 2.5;
+    ellipseW = ellipseW - 2.7;
  
 
 
