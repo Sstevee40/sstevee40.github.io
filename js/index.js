@@ -3,6 +3,7 @@ var x, y, ballSize;
 var h = window.innerHeight;
 var w = window.innerWidth;
 var circleTimer = 0;
+var scaleCounter = 1;
 
 
 
@@ -20,7 +21,7 @@ function setup() {
    ellipseW = random(100,200);
    ellipseH = random(100,200);
    ellipseX = random(w);
-   		ellipseY = random(h);
+   ellipseY = random(h);
 
 
 
@@ -36,9 +37,15 @@ function draw() {
 	circleTimer = circleTimer + 1;
 
 
-	ellipse(ellipseX, ellipseY, ellipseW, ellipseH);
-	ellipseW = ellipseW - 2;
-	ellipseH = ellipseH - 2;
+     
+    translate(w/2, h/2);
+
+    scaleCounter = scaleCounter - 0.1;
+	scale(scaleCounter,scaleCounter);
+
+
+   ellipse(ellipseX, ellipseY, ellipseW, ellipseH);
+
 
 	if (ellipseW < 2 || ellipseH < 2) {
 
