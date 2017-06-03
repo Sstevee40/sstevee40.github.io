@@ -2,20 +2,13 @@
 var x, y, ballSize;
 var h = window.innerHeight;
 var w = window.innerWidth;
-var numberColor = 1;
-var ballReset = 0;
-var score = 0;
-var ballsUsed = 1;
+var circleTimer = 0;
+
+
 
 
 function preload() {  
-	 an2 = loadAnimation("assets/gradient1.png", "assets/gradient1.png");
-
-	 corkPop = loadSound('assets/cork.flac');
-
-	 pop1 = loadSound('assets/pop1.ogg');
-	 pop2 = loadSound('assets/pop2.ogg');
-	 pop3 = loadSound('assets/pop3.ogg');
+	
 }
 
 
@@ -24,78 +17,11 @@ function preload() {
 function setup() {
 
   createCanvas(window.innerWidth, window.innerHeight);
+   ellipseW = random(100,200);
+   ellipseH = random(100,200);
+   ellipseX = random(w);
+   		ellipseY = random(h);
 
-
-
-  //start center
-  x = width / 2;
-  y = height / 2;
-
-  ballSize = 20;
-  ballSpeed = 16;
-  makeBall();
-
-  var brickImage2 = loadImage("assets/brick3.png");
-  //Create group to store bricks
-  
-
-  bricks = new Group();	
-  brickW = 100;
-  brickH = 20;
-  brickPadding = 0;
-  brickHPadding = 0;
-  numBricks = floor(w/brickW);
-  brickEndPadding = (w - numBricks*brickW);
-
-  brickLines = 5;
-  //Create one row of bricks
-
-  for (var j=0; j < brickLines; j++ ) {
-  	for (var i = 0; i <numBricks; i++) {
-
-  		pickBrick = round(random(0,1));
-  	  //Y Position for each brick
-  	  brickX =  brickEndPadding/2 + brickPadding/2 + brickPadding*i + brickW*i + brickW/2;
-  	  brickY =  brickHPadding/2 + brickHPadding*j + brickH*j + brickH/2;
-
-  	  //Make brick object
-  	  var brick = createSprite(brickX, brickY, brickW, brickH);
-
-  	  brick.addImage(brickImage2);
-
-  	  brick.shapeColor = color(0,0,0);
-  	  //Add object to container
-  	  bricks.add(brick);
-  	  brick.immovable = true;
-
-  	}
-  }
-
- //Create Wall Objects (1 pixels around screen)
- wallTop = createSprite(width/2, 0, width, 1);
- wallTop.immovable = true;
-
- wallBottom = createSprite(width/2, height, width, 1);
- wallBottom.immovable = true;
-
- wallLeft = createSprite(0,height/2,1,innerHeight);
- wallLeft.immovable = true;
-
- wallRight = createSprite(width,height/2,1,height);
- wallRight.immovable = true;
-
- wallTop.shapeColor = wallLeft.shapeColor = wallRight.shapeColor = wallBottom.shapeColor = color(255,255,255);
-
-
- platform = createSprite(0, 0, brickW, brickH);
- platform.immovable = true;
-
- platform.position.y = h - (brickH/10) ;
-
- an2.looping = false;
- an2.frameDelay = 1;
- ball.addAnimation("moving","assets/gradient1.png");
- ball.addAnimation("bouncing",an2);
 
 
 
@@ -104,43 +30,22 @@ function setup() {
 
 function draw() {
 	background(0, 0, 0);
-	ball.shapeColor = color(0);
-	bricks.shapeColor = color(0);
-	platform.shapeColor = color(255, 255, 255);
 
 
-	ball.bounce(bricks,brickCollision);
-	ball.bounce(wallTop);
-	ball.bounce(wallLeft);
-	ball.bounce(wallRight);
-
-
-	platform.position.x = constrain(mouseX, platform.width/2, width-platform.width/2);
 	
-	if(ball.bounce(platform))
-	{
-		pop1.play();
-		var swing = (ball.position.x-platform.position.x)/2;
-		ball.setSpeed(ballSpeed, ball.getDirection()+swing);
-		//ball.addAnimation("bouncing",an2);
-		//ball.changeAnimation('bouncing');
-	}
+	circleTimer = circleTimer + 1;
 
-	if(ball.collide(wallBottom))
-	{
-		ball.remove();
-		ballReset = 1;
-		ballsUsed = ballsUsed + 1;
-	}
 
-	if (ballReset == 1) 
-	{
+	ellipse(ellipseX, ellipseY, ellipseW, ellipseH);
+	ellipseW = ellipseW - 2;
+	ellipseH = ellipseH - 2;
 
-		if (mouseIsPressed)
-		{
-			makeBall();
-			ballReset = 0;
-		}
+	if (ellipseW < 2 || ellipseH < 2) {
+
+		ellipseW = random(100,200);
+   		ellipseH = random(100,200);
+   		ellipseX = random(w);
+   		ellipseY = random(h);
 
 	}
 
@@ -149,7 +54,6 @@ function draw() {
 
 	drawSprites();
 
-	displayText();
 
 }
 
