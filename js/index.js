@@ -39,7 +39,7 @@ function draw() {
 	background(0, 0, 0);
 
 
-strokeWeight(1);
+strokeWeight(2);
 noFill();
 
   	stroke(255,0,0);
