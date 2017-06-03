@@ -8,7 +8,7 @@ var score = 0;
 
 
 function preload() {  
-	
+	 corkPop = loadSound('assets/cork.flac');
 }
 
 
@@ -99,6 +99,7 @@ noFill();
 
 		if (playerDist < 12) {
    			score = score + 1;
+   			corkPop.play();
    		}
 
    		else {
@@ -147,10 +148,10 @@ function makeBall() {
 
 function displayText() {
 
- textSize(32);
+ textSize(48);
  fill(255);
  //Write score in bottom left
- text(score, 10, 30);
+ text(score, 25, 55);
 
 
 
