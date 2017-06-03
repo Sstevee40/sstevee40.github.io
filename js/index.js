@@ -2,6 +2,7 @@
 var h = window.innerHeight;
 var w = window.innerWidth;
 var playerDist = 10;
+var score = 0;
 
 
 
@@ -28,7 +29,7 @@ function setup() {
    ellipse3X = random(w);
    ellipse3Y = random(h);
 
-  playerFill = random(1,4);
+  playerFill = floor(random(1,4));
 
 
 }
@@ -38,16 +39,16 @@ function draw() {
 	background(0, 0, 0);
 
 
-	
+strokeWeight(4);
+noFill();
 
-
-  	fill(255,0,0);
+  	stroke(255,0,0);
     ellipse(ellipse1X, ellipse1Y, ellipseW,ellipseW);
 
-	fill(0,255,0);
+	stroke(0,255,0);
     ellipse(ellipse2X, ellipse2Y, ellipseW,ellipseW);
 
-	fill(0,0,255);
+	stroke(0,0,255);
 	ellipse(ellipse3X, ellipse3Y, ellipseW,ellipseW);
 
 
@@ -67,6 +68,8 @@ function draw() {
 		playerDist = dist(ellipse3X,ellipse3Y,mouseX,mouseY);
 	}
 
+	noStroke();
+
 	playerEllipse = ellipse(mouseX,mouseY,30,30);
 
 
@@ -78,9 +81,8 @@ function draw() {
 
 
 
-	if (ellipseW < 50){
+	if (ellipseW < 32){
 
-		if (playerDist < 15) {
 
 		ellipseW = random(150,300);
 		
@@ -95,12 +97,12 @@ function draw() {
 
    		playerFill = floor(random(1,4));
 
+		if (playerDist < 12) {
+   			score = score + 1;
    		}
 
    		else {
-
-
-   			ellipseW = 0;
+   			score = 0;
    		}
 
 
@@ -110,7 +112,7 @@ function draw() {
 
 
 	drawSprites();
-
+	displayText();
 
 }
 
@@ -148,9 +150,8 @@ function displayText() {
  textSize(32);
  fill(255);
  //Write score in bottom left
- text(score, 10, h-10);
- //Write amount of balls used in bottom right
- text(ballsUsed, w-40,h-10);
+ text(score, 10, 30);
+
 
 
 }
