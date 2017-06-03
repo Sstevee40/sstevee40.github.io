@@ -20,14 +20,14 @@ function setup() {
 
    ellipseW = 300;
 
-   ellipse1X = random(w);
-   ellipse1Y = random(h);
+   ellipse1X = random(100, w-100);
+   ellipse1Y = random(100, h-100);
 
-   ellipse2X = random(w);
-   ellipse2Y = random(h);
+   ellipse2X = random(100, w-100);
+   ellipse2Y = random(100, h-100);
 
-   ellipse3X = random(w);
-   ellipse3Y = random(h);
+   ellipse3X = random(100,w-100);
+   ellipse3Y = random(100, h-100);
 
   playerFill = floor(random(1,4));
 
@@ -84,16 +84,16 @@ noFill();
 	if (ellipseW < 32){
 
 
-		ellipseW = random(150,300);
+		ellipseW = random(200,300);
 		
-   		ellipse1X = random(w);
-   		ellipse1Y = random(h);
+   ellipse1X = random(100, w-100);
+   ellipse1Y = random(100, h-100);
 
-   		ellipse2X = random(w);
-   		ellipse2Y = random(h);
-		
-   		ellipse3X = random(w);
-   		ellipse3Y = random(h);
+   ellipse2X = random(100, w-100);
+   ellipse2Y = random(100, h-100);
+
+   ellipse3X = random(100,w-100);
+   ellipse3Y = random(100, h-100);
 
    		playerFill = floor(random(1,4));
 
